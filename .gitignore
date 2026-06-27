@@ -1,0 +1,15 @@
+# Raw datasets
+data/raw/*.csv
+
+# Cleaned datasets
+data/cleaned/*.csv
+
+# Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
