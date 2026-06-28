@@ -58,7 +58,25 @@ Ecommerce-Analytics/
 
 ## Current Status
 
-**Phase 0 – Project Planning** ✅
+Phase	Status
+✅ Phase 0	Project Planning
+✅ Phase 1	Business Understanding
+✅ Phase 2	Data Understanding & Documentation
+✅ Phase 3	Environment Setup
+⬜ Phase 4	Database Design
+⬜ Phase 5	Data Import & Validation
+⬜ Phase 6	SQL Business Analysis
+⬜ Phase 7	Data Cleaning
+⬜ Phase 8	Exploratory Data Analysis
+⬜ Phase 9	Feature Engineering
+⬜ Phase 10	Advanced Analytics
+⬜ Phase 11	Power BI Dashboard
+⬜ Phase 12	Business Storytelling
+⬜ Phase 13	Executive Report
+⬜ Phase 14	Deployment
+⬜ Phase 15	GitHub Portfolio
+
+
 
 ---
 
