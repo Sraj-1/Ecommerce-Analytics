@@ -1,0 +1,103 @@
+// ==========================================================
+// Olist E-Commerce Database
+// Entity Relationship Diagram (DBML)
+// Project: Ecommerce-Analytics
+// ==========================================================
+
+Table customers {
+customer_id varchar [pk]
+customer_unique_id varchar
+customer_zip_code_prefix int
+customer_city varchar
+customer_state varchar
+}
+
+Table orders {
+order_id varchar [pk]
+customer_id varchar [ref: > customers.customer_id]
+order_status varchar
+order_purchase_timestamp timestamp
+order_approved_at timestamp
+order_delivered_carrier_date timestamp
+order_delivered_customer_date timestamp
+order_estimated_delivery_date timestamp
+}
+
+Table order_items {
+order_id varchar [ref: > orders.order_id]
+order_item_id int
+product_id varchar [ref: > products.product_id]
+seller_id varchar [ref: > sellers.seller_id]
+shipping_limit_date timestamp
+price decimal
+freight_value decimal
+
+indexes {
+(order_id, order_item_id) [pk]
+}
+}
+
+Table products {
+product_id varchar [pk]
+product_category_name varchar
+product_name_length int
+product_description_length int
+product_photos_qty int
+product_weight_g int
+product_length_cm int
+product_height_cm int
+product_width_cm int
+}
+
+Table sellers {
+seller_id varchar [pk]
+seller_zip_code_prefix int
+seller_city varchar
+seller_state varchar
+}
+
+Table order_payments {
+order_id varchar [ref: > orders.order_id]
+payment_sequential int
+payment_type varchar
+payment_installments int
+payment_value decimal
+
+indexes {
+(order_id, payment_sequential) [pk]
+}
+}
+
+Table order_reviews {
+review_id varchar
+order_id varchar [pk, ref: > orders.order_id]
+review_score int
+review_comment_title varchar
+review_comment_message text
+review_creation_date timestamp
+review_answer_timestamp timestamp
+}
+
+Table geolocation {
+geolocation_zip_code_prefix int
+geolocation_lat decimal
+geolocation_lng decimal
+geolocation_city varchar
+geolocation_state varchar
+}
+
+Table product_category_name_translation {
+product_category_name varchar [pk]
+product_category_name_english varchar
+}
+
+// ----------------------------------------------------------
+// Logical Relationships
+// (Not enforced as Foreign Keys)
+// ----------------------------------------------------------
+
+Ref: customers.customer_zip_code_prefix > geolocation.geolocation_zip_code_prefix
+
+Ref: sellers.seller_zip_code_prefix > geolocation.geolocation_zip_code_prefix
+
+Ref: products.product_category_name > product_category_name_translation.product_category_name
